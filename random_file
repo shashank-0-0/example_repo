@@ -1,0 +1,23 @@
+private static void cs2(int cur_ind,int sum,int[] arr,
+                                ArrayList<Integer> curlist,
+                                List<List<Integer>> ans){
+            if(sum==0){
+                ans.add(new ArrayList(curlist));
+                return;
+            }
+            // if(cur_ind>=arr.length){
+            //     return;
+            // }
+            for(int i=cur_ind;i<arr.length;i++){
+                if(i>cur_ind && arr[i]==arr[i-1]){
+                    continue;
+                }
+                if(sum<arr[i]){
+                    break;
+                }
+                curlist.add(arr[i]);
+                cs2(i+1,sum-arr[i],arr,curlist,ans);
+                curlist.remove(curlist.size()-1);
+            }
+            return;
+        }
